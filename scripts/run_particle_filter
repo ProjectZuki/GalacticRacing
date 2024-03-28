@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# checks if command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+echo -e "Running Particle Filter ...\n"
+
+# each command will check if it exists, if not, source and re-try
+
+echo -e "Running f1tenth\n"
+# terminal 1: launch
+
+# NO USE THIS ONE, this is for vehicle
+# gnome-terminal --tab -- bash -c 'source /opt/ros/foxy/setup.bash;
+#                                  source ~/GalacticRacing/sim_ws/install/setup.bash;
+#                                  cd ~/GalacticRacing/sim_ws/;
+#                                  ros2 launch f1tenth_stack bringup_launch.py; exec bash'
+
+# gnome-terminal --tab -- bash -c 'source /opt/ros/foxy/setup.bash;
+#                                  source ~/GalacticRacing/sim_ws/install/setup.bash;
+#                                  cd ~/GalacticRacing/sim_ws/;
+#                                  colcon build;
+#                                  ros2 launch f1tenth_gym_ros gym_bridge_launch.py; exec bash'
+
+# gnome-terminal --tab -- bash -c 'ros2 launch f1tenth_gym_ros gym_bridge_launch.py; exec bash'
+
+
+# sleep 2
+
+# BREANNA SAID NO!!!
+echo -e "Running rviz2\n"
+# terminal 3: launch rviz2
+gnome-terminal --tab -- bash -c 'if ! command_exists rviz2;
+                                 then source /opt/ros/foxy/setup.bash;
+                                 fi; rviz2;
+                                 exec bash'
+
+sleep 2
+
+echo -e "Running particle filter\n"
+# terminal 2: launch slam_toolbox
+gnome-terminal --tab -- bash -c 'source /opt/ros/foxy/setup.bash;
+                                 source ~/GalacticRacing/sim_ws/install/setup.bash;
+                                 cd ~/GalacticRacing/sim_ws/;
+                                 ros2 launch particle_filter localize_launch.py; exec bash'
+
+sleep 2
+
+echo -e "Running teleop_twist_keyboard\n"
+# terminal 4: launch keyboard control
+gnome-terminal --tab -- bash -c 'if ! command_exists teleop_twist_keyboard;
+                                 then source /opt/ros/foxy/setup.bash; 
+                                 fi;
+                                 ros2 run teleop_twist_keyboard teleop_twist_keyboard;
+                                 exec bash'
