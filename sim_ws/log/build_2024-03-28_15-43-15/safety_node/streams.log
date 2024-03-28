@@ -1,0 +1,97 @@
+[1.739s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/home/zuki/sim_ws/install/particle_filter:/home/zuki/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake /home/zuki/GalacticRacing/sim_ws/src/safety_node -DCMAKE_INSTALL_PREFIX=/home/zuki/GalacticRacing/sim_ws/install/safety_node
+[1.808s] -- The C compiler identification is GNU 9.4.0
+[1.921s] -- The CXX compiler identification is GNU 9.4.0
+[1.936s] -- Check for working C compiler: /usr/bin/cc
+[2.077s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.100s] -- Detecting C compiler ABI info
+[2.214s] -- Detecting C compiler ABI info - done
+[2.214s] -- Detecting C compile features
+[2.215s] -- Detecting C compile features - done
+[2.215s] -- Check for working CXX compiler: /usr/bin/c++
+[2.316s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[2.316s] -- Detecting CXX compiler ABI info
+[2.459s] -- Detecting CXX compiler ABI info - done
+[2.474s] -- Detecting CXX compile features
+[2.474s] -- Detecting CXX compile features - done
+[2.482s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.508s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[2.509s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.719s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.772s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.784s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[2.917s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[2.953s] -- Found FastRTPS: /opt/ros/foxy/include  
+[3.034s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.094s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[3.095s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.095s] -- Looking for pthread.h
+[3.177s] -- Looking for pthread.h - found
+[3.178s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.271s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[3.271s] -- Looking for pthread_create in pthreads
+[3.351s] -- Looking for pthread_create in pthreads - not found
+[3.351s] -- Looking for pthread_create in pthread
+[3.490s] -- Looking for pthread_create in pthread - found
+[3.490s] -- Found Threads: TRUE  
+[3.620s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[3.621s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[3.732s] -- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)
+[3.768s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[3.844s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[3.957s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.958s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.958s] -- Configured cppcheck include dirs: /home/zuki/GalacticRacing/sim_ws/src/safety_node/include
+[3.959s] -- Configured cppcheck exclude dirs and/or files: 
+[3.959s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.959s] -- Configured cpplint exclude dirs and/or files: 
+[3.960s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.960s] -- Added test 'lint_cmake' to check CMake code style
+[3.961s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[3.961s] -- Added test 'uncrustify' to check C / C++ code style
+[3.961s] -- Configured uncrustify additional arguments: 
+[3.962s] -- Added test 'xmllint' to check XML markup files
+[3.964s] -- Configuring done
+[3.971s] -- Generating done
+[3.973s] -- Build files have been written to: /home/zuki/GalacticRacing/sim_ws/build/safety_node
+[4.048s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/home/zuki/sim_ws/install/particle_filter:/home/zuki/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake /home/zuki/GalacticRacing/sim_ws/src/safety_node -DCMAKE_INSTALL_PREFIX=/home/zuki/GalacticRacing/sim_ws/install/safety_node
+[4.068s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/home/zuki/sim_ws/install/particle_filter:/home/zuki/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/safety_node -- -j8 -l8
+[4.189s] [35m[1mScanning dependencies of target safety_node[0m
+[4.264s] [ 50%] [32mBuilding CXX object CMakeFiles/safety_node.dir/src/safety_node.cpp.o[0m
+[5.584s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::drive_callback(nav_msgs::msg::Odometry_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[5.584s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/safety_node/src/safety_node.cpp:33:71:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.585s]    33 |     void drive_callback([01;35m[Kconst nav_msgs::msg::Odometry::ConstSharedPtr msg[m[K)
+[5.585s]       |                         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[5.593s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/safety_node/src/safety_node.cpp:[m[K In member function ‘[01m[Kvoid Safety::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[5.593s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/safety_node/src/safety_node.cpp:38:74:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kscan_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.595s]    38 |     void scan_callback([01;35m[Kconst sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg[m[K)
+[5.595s]       |                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[6.341s] [100%] [32m[1mLinking CXX executable safety_node[0m
+[6.568s] [100%] Built target safety_node
+[6.724s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/home/zuki/sim_ws/install/particle_filter:/home/zuki/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/safety_node -- -j8 -l8
+[6.849s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/home/zuki/sim_ws/install/particle_filter:/home/zuki/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/safety_node
+[6.856s] -- Install configuration: ""
+[6.856s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/safety_node/safety_node
+[6.856s] -- Set runtime path of "/home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/safety_node/safety_node" to ""
+[6.857s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.sh
+[6.857s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.dsv
+[6.857s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node
+[6.857s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py
+[7.064s] Listing '/home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node'...
+[7.067s] Compiling '/home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py'...
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/safety_node/safety_node.py
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/ament_index/resource_index/package_run_dependencies/safety_node
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/ament_index/resource_index/parent_prefix_path/safety_node
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.sh
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.dsv
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/path.sh
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/path.dsv
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.bash
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.sh
+[7.067s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.zsh
+[7.069s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.dsv
+[7.069s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/package.dsv
+[7.069s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/ament_index/resource_index/packages/safety_node
+[7.069s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig.cmake
+[7.069s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig-version.cmake
+[7.069s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/package.xml
+[7.520s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/home/zuki/sim_ws/install/particle_filter:/home/zuki/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/safety_node
