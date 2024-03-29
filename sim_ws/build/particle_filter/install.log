@@ -9,7 +9,9 @@
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/levine.yaml
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/waffle_map.yaml
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/basement_fixed.map.yaml
+/home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/levine_blocked.png
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/basement_fixed.png
+/home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/levine_blocked.yaml
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/waffle_map.pgm
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/this_is_the_map.yaml
 /home/zuki/GalacticRacing/sim_ws/install/particle_filter/share/particle_filter/maps/levine.pgm
