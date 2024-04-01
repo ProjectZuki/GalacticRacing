@@ -8,7 +8,6 @@ gnome-terminal --tab -- bash -c 'source /opt/ros/foxy/setup.bash;
 
 gnome-terminal --tab -- bash -c 'ros2 launch f1tenth_gym_ros gym_bridge_launch.py;
                                 exec bash'
-sleep(4)
 
 gnome-terminal --tab -- bash -c 'ros2 launch particle_filter localize_launch.py;
                                 exec bash'
