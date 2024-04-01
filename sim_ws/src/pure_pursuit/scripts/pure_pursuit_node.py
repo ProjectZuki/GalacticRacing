@@ -16,7 +16,7 @@ from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 from visualization_msgs.msg import Marker, MarkerArray
 from tf_transformations import quaternion_from_euler, euler_from_quaternion
 
-root_dir = "/home/vy/GalacticRacing/sim_ws/src"
+root_dir = "/home/zuki/GalacticRacing/sim_ws/src"
 
 class PurePursuit(Node):
     """ 
@@ -60,8 +60,12 @@ class PurePursuit(Node):
         self.markers = []
         self.path = []
         self.track_pt = (0.0, 0.0)
+        self.going_to_crash = False
 
     def scan_callback(self, scan_msg):
+        # emergency braking
+        self.going_to_crash = self.collision_imminent(scan_msg)
+
         # render 360 degree circle around car to visualize sample radius
         new_scan : LaserScan = scan_msg
         new_scan.angle_min = math.radians(-180.0)
@@ -169,16 +173,19 @@ class PurePursuit(Node):
         if angle < math.radians(-20.0):
             angle = math.radians(-20.0)
         elif angle > math.radians(20.0):
-            angle = math.radians(20.0)
+            angle = math.radians(20.0)  
 
-        # jesus take the wheel
-        drive_msg = AckermannDriveStamped()
-        # drive_msg.drive.speed = 0.0
-        drive_msg.drive.speed = max_pt['speed']
-        drive_msg.drive.steering_angle = angle
+        if self.going_to_crash:
+            self.halt()
+        else: 
+            # jesus take the wheelS
+            drive_msg = AckermannDriveStamped()
+            # drive_msg.drive.speed = 0.0
+            drive_msg.drive.speed = max_pt['speed']
+            drive_msg.drive.steering_angle = angle
 
-        self.drive_pub.publish(drive_msg)
-    
+            self.drive_pub.publish(drive_msg)
+
     def get_path(self, filename):
         # open waypoint file
         waypoint_csv = open(root_dir + '/pure_pursuit/paths/' + filename + '.csv', 'r')
@@ -301,6 +308,17 @@ class PurePursuit(Node):
             j += 1
 
         self.markers_pub.publish(markers)
+    
+    # check if we are too close to a wall
+    def collision_imminent(self, scan_msg):
+        DANGER_THRESH : float = 0.3
+        safety_scan : LaserScan = scan_msg
+
+        # check if any potential steering ponts are in danger
+        for i in range(180, 900):
+            if safety_scan.ranges[i] < DANGER_THRESH:
+                return True
+        return False
     
     def halt(self):
         drive_msg = AckermannDriveStamped()
