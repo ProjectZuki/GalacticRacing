@@ -1,0 +1,28 @@
+[0.168s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/safety_node -- -j6 -l6
+[0.448s] [100%] Built target safety_node
+[0.469s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/safety_node -- -j6 -l6
+[0.644s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/safety_node
+[0.655s] -- Install configuration: ""
+[0.667s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/safety_node/safety_node
+[0.670s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.sh
+[0.670s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/pythonpath.dsv
+[0.672s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node
+[0.674s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node/__init__.py
+[0.750s] Listing '/home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages/safety_node'...
+[0.784s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/safety_node/safety_node.py
+[0.785s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/ament_index/resource_index/package_run_dependencies/safety_node
+[0.786s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/ament_index/resource_index/parent_prefix_path/safety_node
+[0.786s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.sh
+[0.788s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/ament_prefix_path.dsv
+[0.788s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/path.sh
+[0.794s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/environment/path.dsv
+[0.803s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.bash
+[0.804s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.sh
+[0.820s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.zsh
+[0.820s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/local_setup.dsv
+[0.820s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/package.dsv
+[0.820s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/ament_index/resource_index/packages/safety_node
+[0.820s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig.cmake
+[0.820s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/cmake/safety_nodeConfig-version.cmake
+[0.820s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/safety_node/share/safety_node/package.xml
+[0.865s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/safety_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/safety_node

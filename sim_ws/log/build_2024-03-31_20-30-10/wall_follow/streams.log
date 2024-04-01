@@ -1,0 +1,125 @@
+[0.053s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake /home/zuki/GalacticRacing/sim_ws/src/wall_follow -DCMAKE_INSTALL_PREFIX=/home/zuki/GalacticRacing/sim_ws/install/wall_follow
+[0.155s] -- The C compiler identification is GNU 9.4.0
+[0.230s] -- The CXX compiler identification is GNU 9.4.0
+[0.236s] -- Check for working C compiler: /usr/bin/cc
+[0.382s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.382s] -- Detecting C compiler ABI info
+[0.490s] -- Detecting C compiler ABI info - done
+[0.504s] -- Detecting C compile features
+[0.504s] -- Detecting C compile features - done
+[0.507s] -- Check for working CXX compiler: /usr/bin/c++
+[0.634s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.636s] -- Detecting CXX compiler ABI info
+[0.807s] -- Detecting CXX compiler ABI info - done
+[0.819s] -- Detecting CXX compile features
+[0.819s] -- Detecting CXX compile features - done
+[0.822s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.861s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.861s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.084s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.168s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.175s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.340s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.379s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.483s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.551s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.554s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.556s] -- Looking for pthread.h
+[1.672s] -- Looking for pthread.h - found
+[1.672s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.919s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.920s] -- Looking for pthread_create in pthreads
+[2.113s] -- Looking for pthread_create in pthreads - not found
+[2.113s] -- Looking for pthread_create in pthread
+[2.300s] -- Looking for pthread_create in pthread - found
+[2.302s] -- Found Threads: TRUE  
+[2.507s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[2.508s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[2.561s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[2.640s] -- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)
+[2.687s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[2.840s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[2.927s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.935s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.935s] -- Configured cppcheck include dirs: /home/zuki/GalacticRacing/sim_ws/src/wall_follow/include
+[2.935s] -- Configured cppcheck exclude dirs and/or files: 
+[2.935s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.935s] -- Configured cpplint exclude dirs and/or files: 
+[2.935s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.936s] -- Added test 'lint_cmake' to check CMake code style
+[2.937s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[2.938s] -- Added test 'uncrustify' to check C / C++ code style
+[2.938s] -- Configured uncrustify additional arguments: 
+[2.939s] -- Added test 'xmllint' to check XML markup files
+[2.944s] -- Configuring done
+[2.976s] -- Generating done
+[2.978s] -- Build files have been written to: /home/zuki/GalacticRacing/sim_ws/build/wall_follow
+[2.995s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake /home/zuki/GalacticRacing/sim_ws/src/wall_follow -DCMAKE_INSTALL_PREFIX=/home/zuki/GalacticRacing/sim_ws/install/wall_follow
+[2.995s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/wall_follow -- -j6 -l6
+[3.632s] [35m[1mScanning dependencies of target wall_follow_node[0m
+[3.632s] [ 50%] [32mBuilding CXX object CMakeFiles/wall_follow_node.dir/src/wall_follow_node.cpp.o[0m
+[5.687s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_range(float*, double)[m[K’:
+[5.687s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:30:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.687s]    30 |     double get_range([01;35m[Kfloat* range_data[m[K, double angle)
+[5.688s]       |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[5.688s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:30:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kangle[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.688s]    30 |     double get_range(float* range_data, [01;35m[Kdouble angle[m[K)
+[5.688s]       |                                         [01;35m[K~~~~~~~^~~~~[m[K
+[5.688s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kdouble WallFollow::get_error(float*, double)[m[K’:
+[5.688s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:47:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krange_data[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.688s]    47 |     double get_error([01;35m[Kfloat* range_data[m[K, double dist)
+[5.688s]       |                      [01;35m[K~~~~~~~^~~~~~~~~~[m[K
+[5.691s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:47:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kdist[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.691s]    47 |     double get_error(float* range_data, [01;35m[Kdouble dist[m[K)
+[5.692s]       |                                         [01;35m[K~~~~~~~^~~~[m[K
+[5.692s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::pid_control(double, double)[m[K’:
+[5.693s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:76:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kangle[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[5.693s]    76 |         double [01;35m[Kangle[m[K = 0.0;
+[5.694s]       |                [01;35m[K^~~~~[m[K
+[5.694s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:64:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kerror[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.694s]    64 |     void pid_control([01;35m[Kdouble error[m[K, double velocity)
+[5.695s]       |                      [01;35m[K~~~~~~~^~~~~[m[K
+[5.695s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:64:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.696s]    64 |     void pid_control(double error, [01;35m[Kdouble velocity[m[K)
+[5.696s]       |                                    [01;35m[K~~~~~~~^~~~~~~~[m[K
+[5.703s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:[m[K In member function ‘[01m[Kvoid WallFollow::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::ConstSharedPtr)[m[K’:
+[5.703s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:93:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kerror[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[5.704s]    93 |         double [01;35m[Kerror[m[K = 0.0; // TODO: replace with error calculated by get_error()
+[5.704s]       |                [01;35m[K^~~~~[m[K
+[5.705s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:94:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kvelocity[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[5.705s]    94 |         double [01;35m[Kvelocity[m[K = 0.0; // TODO: calculate desired car velocity based on error
+[5.706s]       |                [01;35m[K^~~~~~~~[m[K
+[5.706s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/wall_follow/src/wall_follow_node.cpp:82:74:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kscan_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.707s]    82 | oid scan_callback([01;35m[Kconst sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg[m[K)
+[5.707s]       |                   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[5.707s] 
+[6.986s] [100%] [32m[1mLinking CXX executable wall_follow_node[0m
+[7.404s] [100%] Built target wall_follow_node
+[7.432s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/wall_follow -- -j6 -l6
+[7.662s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/wall_follow
+[7.684s] -- Install configuration: ""
+[7.685s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node
+[7.685s] -- Set runtime path of "/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node" to ""
+[7.685s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.sh
+[7.685s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.dsv
+[7.685s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow
+[7.685s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py
+[7.741s] Listing '/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow'...
+[7.741s] Compiling '/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py'...
+[7.750s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node.py
+[7.750s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/package_run_dependencies/wall_follow
+[7.750s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/parent_prefix_path/wall_follow
+[7.750s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.sh
+[7.750s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.dsv
+[7.750s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/path.sh
+[7.751s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/path.dsv
+[7.751s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.bash
+[7.752s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.sh
+[7.752s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.zsh
+[7.752s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.dsv
+[7.752s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/package.dsv
+[7.752s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/packages/wall_follow
+[7.753s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig.cmake
+[7.753s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig-version.cmake
+[7.753s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/package.xml
+[7.763s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/wall_follow
