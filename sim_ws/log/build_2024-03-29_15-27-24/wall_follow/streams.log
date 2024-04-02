@@ -1,0 +1,28 @@
+[0.022s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/wall_follow -- -j6 -l6
+[0.168s] [100%] Built target wall_follow_node
+[0.202s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/wall_follow -- -j6 -l6
+[0.288s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/wall_follow
+[0.305s] -- Install configuration: ""
+[0.306s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node
+[0.306s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.sh
+[0.306s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.dsv
+[0.306s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow
+[0.306s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py
+[0.350s] Listing '/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow'...
+[0.357s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node.py
+[0.357s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/package_run_dependencies/wall_follow
+[0.357s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/parent_prefix_path/wall_follow
+[0.357s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.sh
+[0.357s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.dsv
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/path.sh
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/path.dsv
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.bash
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.sh
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.zsh
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.dsv
+[0.358s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/package.dsv
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/packages/wall_follow
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig.cmake
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig-version.cmake
+[0.358s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/package.xml
+[0.369s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/wall_follow

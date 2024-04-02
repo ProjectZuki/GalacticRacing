@@ -42,8 +42,13 @@ bridge:
     scan_beams: 1080
 
     # map parameters
+<<<<<<< HEAD
     map_path: '/home/zuki/GalacticRacing/sim_ws/src/f1tenth_gym_ros/maps/AEB_flex'
     map_img_ext: '.pgm'
+=======
+    map_path: '/home/zuki/GalacticRacing/sim_ws/src/f1tenth_gym_ros/maps/levine_blocked'
+    map_img_ext: '.png'
+>>>>>>> 19ac4f60acb03b3873e8699909281bf0080a3369
 
     # opponent parameters
     num_agent: 1

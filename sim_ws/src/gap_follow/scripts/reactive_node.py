@@ -8,6 +8,7 @@ from sensor_msgs.msg import LaserScan
 from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 
 import copy
+import atexit
 
 from typing import (
     List, Tuple, Dict
@@ -322,10 +323,21 @@ class ReactiveFollowGap(Node):
         msg.drive.steering_angle = self.steering_angle
         self.drive_pub.publish(msg)
 
+    def halt(self):
+        # stop car in event of exiting gap_follow
+        drive_msg = AckermannDriveStamped()
+        drive_msg.drive.speed = 0.0
+        drive_msg.drive.steering_angle = 0.0
+
+        self.drive_pub.publish(drive_msg)
+
 def main(args=None):
     rclpy.init(args=args)
     print("Gap Follow Initialized")
     reactive_node = ReactiveFollowGap()
+
+    atexit.register(reactive_node.halt)
+
     rclpy.spin(reactive_node)
 
     reactive_node.destroy_node()

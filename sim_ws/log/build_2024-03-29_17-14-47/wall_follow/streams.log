@@ -1,0 +1,58 @@
+[0.034s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/wall_follow -- -j6 -l6
+[0.062s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.102s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.246s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.279s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.284s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.474s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.540s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.542s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.730s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[0.730s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[0.777s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[0.886s] -- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)
+[0.920s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[1.003s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.070s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.070s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.070s] -- Configured cppcheck include dirs: /home/zuki/GalacticRacing/sim_ws/src/wall_follow/include
+[1.070s] -- Configured cppcheck exclude dirs and/or files: 
+[1.071s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.071s] -- Configured cpplint exclude dirs and/or files: 
+[1.072s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.072s] -- Added test 'lint_cmake' to check CMake code style
+[1.072s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[1.076s] -- Added test 'uncrustify' to check C / C++ code style
+[1.076s] -- Configured uncrustify additional arguments: 
+[1.076s] -- Added test 'xmllint' to check XML markup files
+[1.079s] -- Configuring done
+[1.094s] -- Generating done
+[1.099s] -- Build files have been written to: /home/zuki/GalacticRacing/sim_ws/build/wall_follow
+[1.151s] [100%] Built target wall_follow_node
+[1.171s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/wall_follow -- -j6 -l6
+[1.211s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/wall_follow
+[1.220s] -- Install configuration: ""
+[1.221s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node
+[1.221s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.sh
+[1.221s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/pythonpath.dsv
+[1.222s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow
+[1.222s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py
+[1.256s] Listing '/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow'...
+[1.256s] Compiling '/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/__init__.py'...
+[1.259s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/wall_follow/wall_follow_node.py
+[1.259s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/package_run_dependencies/wall_follow
+[1.259s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/parent_prefix_path/wall_follow
+[1.260s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.sh
+[1.260s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/ament_prefix_path.dsv
+[1.260s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/path.sh
+[1.260s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/environment/path.dsv
+[1.261s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.bash
+[1.261s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.sh
+[1.261s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.zsh
+[1.262s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/local_setup.dsv
+[1.262s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/package.dsv
+[1.262s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/ament_index/resource_index/packages/wall_follow
+[1.262s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig.cmake
+[1.262s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/cmake/wall_followConfig-version.cmake
+[1.263s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/wall_follow/share/wall_follow/package.xml
+[1.267s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/wall_follow' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/wall_follow
