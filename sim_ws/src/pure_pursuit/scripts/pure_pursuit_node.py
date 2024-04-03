@@ -85,9 +85,6 @@ class PurePursuit(Node):
         # emergency braking
         self.going_to_crash = self.collision_imminent(scan_msg)
 
-        # emergency braking
-        self.going_to_crash = self.collision_imminent(scan_msg)
-
         # render 360 degree circle around car to visualize sample radius
         new_scan : LaserScan = scan_msg
         new_scan.angle_min = math.radians(-180.0)
@@ -283,7 +280,7 @@ class PurePursuit(Node):
 
     # check if we are too close to a wall
     def collision_imminent(self, scan_msg):
-        DANGER_THRESH : float = 0.25
+        DANGER_THRESH : float = 0.2
         safety_scan : LaserScan = scan_msg
 
         # check if any potential steering ponts are in danger
