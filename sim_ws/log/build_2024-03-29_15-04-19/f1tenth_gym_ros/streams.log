@@ -1,0 +1,46 @@
+[1.425s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/src/f1tenth_gym_ros': PYTHONPATH=/home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/prefix_override:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/f1tenth_gym_ros build --build-base /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build install --record /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/install.log --install-scripts $base/lib/f1tenth_gym_ros --single-version-externally-managed install_data
+[1.658s] running egg_info
+[1.659s] creating ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info
+[1.661s] writing ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/PKG-INFO
+[1.666s] writing dependency_links to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/dependency_links.txt
+[1.668s] writing entry points to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/entry_points.txt
+[1.668s] writing requirements to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/requires.txt
+[1.668s] writing top-level names to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/top_level.txt
+[1.673s] writing manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[1.739s] reading manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[1.740s] writing manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[1.740s] running build
+[1.740s] running build_py
+[1.740s] creating /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build
+[1.740s] creating /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build/lib
+[1.741s] creating /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[1.741s] copying f1tenth_gym_ros/gym_bridge.py -> /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[1.741s] copying f1tenth_gym_ros/__init__.py -> /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[1.741s] running install
+[1.742s] running install_lib
+[1.743s] creating /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.743s] copying /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/gym_bridge.py -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.743s] copying /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/__init__.py -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.743s] byte-compiling /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/gym_bridge.py to gym_bridge.cpython-38.pyc
+[1.747s] byte-compiling /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/__init__.py to __init__.cpython-38.pyc
+[1.748s] running install_data
+[1.748s] creating /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/ament_index
+[1.748s] creating /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/ament_index/resource_index
+[1.748s] creating /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/ament_index/resource_index/packages
+[1.748s] copying resource/f1tenth_gym_ros -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/ament_index/resource_index/packages
+[1.748s] copying package.xml -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros
+[1.748s] creating /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.748s] copying launch/gym_bridge_launch.py -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.748s] copying launch/ego_racecar ORIGINAL.xacro -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.748s] copying launch/opp_racecar.xacro -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.748s] copying launch/ego_racecar.xacro -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.748s] copying launch/ego_tracker.rviz -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.749s] copying launch/gym_bridge.rviz -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch
+[1.749s] creating /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config
+[1.749s] copying config/sim.yaml -> /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config
+[1.749s] running install_egg_info
+[1.750s] Copying ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info to /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros-0.0.0-py3.8.egg-info
+[1.751s] running install_scripts
+[1.776s] Installing gym_bridge script to /home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/f1tenth_gym_ros
+[1.776s] writing list of installed files to '/home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/install.log'
+[1.838s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/src/f1tenth_gym_ros' returned '0': PYTHONPATH=/home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/prefix_override:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/f1tenth_gym_ros build --build-base /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/build install --record /home/zuki/GalacticRacing/sim_ws/build/f1tenth_gym_ros/install.log --install-scripts $base/lib/f1tenth_gym_ros --single-version-externally-managed install_data

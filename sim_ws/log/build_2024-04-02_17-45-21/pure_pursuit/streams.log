@@ -1,0 +1,78 @@
+[1.758s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/pure_pursuit -- -j8 -l8
+[1.779s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[1.811s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.986s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.986s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.987s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[2.146s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.208s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.224s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.433s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[2.434s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[2.502s] -- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)
+[2.610s] -- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)
+[2.641s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[2.689s] -- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)
+[2.775s] -- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)
+[3.214s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[3.362s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.364s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.365s] -- Configured cppcheck include dirs: /home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/include
+[3.365s] -- Configured cppcheck exclude dirs and/or files: 
+[3.365s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.365s] -- Configured cpplint exclude dirs and/or files: 
+[3.365s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.365s] -- Added test 'lint_cmake' to check CMake code style
+[3.365s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[3.365s] -- Added test 'uncrustify' to check C / C++ code style
+[3.366s] -- Configured uncrustify additional arguments: 
+[3.366s] -- Added test 'xmllint' to check XML markup files
+[3.366s] -- Configuring done
+[3.366s] -- Generating done
+[3.366s] -- Build files have been written to: /home/zuki/GalacticRacing/sim_ws/build/pure_pursuit
+[3.411s] [35m[1mScanning dependencies of target pure_pursuit_node[0m
+[3.482s] [ 50%] [32mBuilding CXX object CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o[0m
+[5.501s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:32:81:[m[K [01;35m[Kwarning: [m[K‘[01m[Kgeometry_msgs::msg::PoseStamped_<std::allocator<void> >::ConstPtr[m[K’ is deprecated [[01;35m[K-Wdeprecated-declarations[m[K]
+[5.501s]    32 | y_msgs::msg::PoseStamped::ConstPtr &pose_msg[01;35m[K)[m[K
+[5.502s]       |                                             [01;35m[K^[m[K
+[5.502s] 
+[5.502s] In file included from [01m[K/opt/ros/foxy/include/geometry_msgs/msg/pose_stamped.hpp:7[m[K,
+[5.503s]                  from [01m[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:10[m[K:
+[5.503s] [01m[K/opt/ros/foxy/include/geometry_msgs/msg/detail/pose_stamped__struct.hpp:114:5:[m[K [01;36m[Knote: [m[Kdeclared here
+[5.503s]   114 |     [01;36m[KConstPtr[m[K;
+[5.503s]       |     [01;36m[K^~~~~~~~[m[K
+[5.503s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:[m[K In member function ‘[01m[Kvoid PurePursuit::pose_callback(const ConstPtr&)[m[K’:
+[5.503s] [01m[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:32:73:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpose_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.503s]    32 | ack([01;35m[Kconst geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg[m[K)
+[5.503s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[5.503s] 
+[5.946s] [100%] [32m[1mLinking CXX executable pure_pursuit_node[0m
+[6.061s] [100%] Built target pure_pursuit_node
+[6.197s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --build /home/zuki/GalacticRacing/sim_ws/build/pure_pursuit -- -j8 -l8
+[7.013s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/pure_pursuit
+[7.045s] -- Install configuration: ""
+[7.046s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node
+[7.047s] -- Set runtime path of "/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node" to ""
+[7.048s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/pythonpath.sh
+[7.048s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/pythonpath.dsv
+[7.049s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit
+[7.049s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit/__init__.py
+[7.078s] Listing '/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit'...
+[7.079s] Compiling '/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit/__init__.py'...
+[7.079s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node.py
+[7.079s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/ament_index/resource_index/package_run_dependencies/pure_pursuit
+[7.079s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/ament_index/resource_index/parent_prefix_path/pure_pursuit
+[7.079s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.sh
+[7.087s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.dsv
+[7.087s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/path.sh
+[7.087s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/path.dsv
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.bash
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.sh
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.zsh
+[7.087s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.dsv
+[7.087s] -- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/package.dsv
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/ament_index/resource_index/packages/pure_pursuit
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig.cmake
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig-version.cmake
+[7.087s] -- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/package.xml
+[7.377s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy /usr/bin/cmake --install /home/zuki/GalacticRacing/sim_ws/build/pure_pursuit

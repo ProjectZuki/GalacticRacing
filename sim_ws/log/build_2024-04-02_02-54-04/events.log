@@ -1,0 +1,130 @@
+[0.000000] (-) TimerEvent: {}
+[0.000266] (-) JobUnselected: {'identifier': 'f1tenth_gym_ros'}
+[0.000363] (-) JobUnselected: {'identifier': 'gap_follow'}
+[0.000383] (-) JobUnselected: {'identifier': 'lab5_pkg'}
+[0.000472] (-) JobUnselected: {'identifier': 'particle_filter'}
+[0.000491] (-) JobUnselected: {'identifier': 'range_lib'}
+[0.000506] (-) JobUnselected: {'identifier': 'safety_node'}
+[0.000742] (-) JobUnselected: {'identifier': 'wall_follow'}
+[0.000832] (-) JobUnselected: {'identifier': 'waypoint_logger'}
+[0.000853] (pure_pursuit) JobQueued: {'identifier': 'pure_pursuit', 'dependencies': OrderedDict()}
+[0.000871] (pure_pursuit) JobStarted: {'identifier': 'pure_pursuit'}
+[0.034991] (pure_pursuit) JobProgress: {'identifier': 'pure_pursuit', 'progress': 'cmake'}
+[0.035297] (pure_pursuit) JobProgress: {'identifier': 'pure_pursuit', 'progress': 'build'}
+[0.035349] (pure_pursuit) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit', '--', '-j6', '-l6'], 'cwd': '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'zuki'), ('SSH_AGENT_PID', '1472'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '3'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/zuki'), ('OLDPWD', '/home/zuki/GalacticRacing'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1109'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/zuki/GalacticRacing/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'zuki'), ('JOURNAL_STREAM', '8:35155'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'zuki'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/zuki/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/zuki-VirtualBox:@/tmp/.ICE-unix/1706,unix/zuki-VirtualBox:/tmp/.ICE-unix/1706'), ('INVOCATION_ID', '54cfc10a98c34ea39fcdcb6535347169'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/29fcf961_b065_4686_b506_691d3c3c56c1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.563'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/zuki/GalacticRacing/sim_ws/install/waypoint_logger:/home/zuki/GalacticRacing/sim_ws/install/wall_follow:/home/zuki/GalacticRacing/sim_ws/install/safety_node:/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/lab5_pkg:/home/zuki/GalacticRacing/sim_ws/install/gap_follow:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/zuki/GalacticRacing/sim_ws/install/waypoint_logger/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/particle_filter/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/lab5_pkg/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/gap_follow/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/zuki/GalacticRacing/sim_ws/install/waypoint_logger:/home/zuki/GalacticRacing/sim_ws/install/wall_follow:/home/zuki/GalacticRacing/sim_ws/install/safety_node:/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit:/home/zuki/GalacticRacing/sim_ws/install/lab5_pkg:/home/zuki/GalacticRacing/sim_ws/install/gap_follow:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[0.075589] (pure_pursuit) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.094385] (-) TimerEvent: {}
+[0.111121] (pure_pursuit) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.196440] (-) TimerEvent: {}
+[0.299587] (-) TimerEvent: {}
+[0.329706] (pure_pursuit) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.394810] (pure_pursuit) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.400111] (-) TimerEvent: {}
+[0.403190] (pure_pursuit) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.502311] (-) TimerEvent: {}
+[0.586796] (pure_pursuit) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.602577] (-) TimerEvent: {}
+[0.650527] (pure_pursuit) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.651961] (pure_pursuit) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.702895] (-) TimerEvent: {}
+[0.800897] (pure_pursuit) StdoutLine: {'line': b'-- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)\n'}
+[0.801700] (pure_pursuit) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[0.804077] (-) TimerEvent: {}
+[0.838602] (pure_pursuit) StdoutLine: {'line': b'-- Found nav_msgs: 2.0.5 (/opt/ros/foxy/share/nav_msgs/cmake)\n'}
+[0.904450] (-) TimerEvent: {}
+[0.927566] (pure_pursuit) StdoutLine: {'line': b'-- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)\n'}
+[0.969671] (pure_pursuit) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.004714] (-) TimerEvent: {}
+[1.058268] (pure_pursuit) StdoutLine: {'line': b'-- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)\n'}
+[1.105182] (-) TimerEvent: {}
+[1.150229] (pure_pursuit) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[1.206159] (-) TimerEvent: {}
+[1.311073] (-) TimerEvent: {}
+[1.411531] (-) TimerEvent: {}
+[1.514763] (pure_pursuit) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.515786] (-) TimerEvent: {}
+[1.592352] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.594124] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.594292] (pure_pursuit) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/include\n'}
+[1.594352] (pure_pursuit) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.598817] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.598975] (pure_pursuit) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.599035] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.599386] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.599504] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[1.600418] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.600530] (pure_pursuit) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.602593] (pure_pursuit) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.608304] (pure_pursuit) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.616689] (-) TimerEvent: {}
+[1.641439] (pure_pursuit) StdoutLine: {'line': b'-- Generating done\n'}
+[1.641689] (pure_pursuit) StdoutLine: {'line': b'-- Build files have been written to: /home/zuki/GalacticRacing/sim_ws/build/pure_pursuit\n'}
+[1.671457] (pure_pursuit) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target pure_pursuit_node\x1b[0m\n'}
+[1.706652] (pure_pursuit) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/pure_pursuit_node.dir/src/pure_pursuit_node.cpp.o\x1b[0m\n'}
+[1.717020] (-) TimerEvent: {}
+[1.817464] (-) TimerEvent: {}
+[1.918131] (-) TimerEvent: {}
+[2.020326] (-) TimerEvent: {}
+[2.122166] (-) TimerEvent: {}
+[2.223675] (-) TimerEvent: {}
+[2.324451] (-) TimerEvent: {}
+[2.425238] (-) TimerEvent: {}
+[2.526349] (-) TimerEvent: {}
+[2.626966] (-) TimerEvent: {}
+[2.727814] (-) TimerEvent: {}
+[2.830857] (-) TimerEvent: {}
+[2.955060] (-) TimerEvent: {}
+[2.969537] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:32:81:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::PoseStamped_<std::allocator<void> >::ConstPtr\x1b[m\x1b[K\xe2\x80\x99 is deprecated [\x1b[01;35m\x1b[K-Wdeprecated-declarations\x1b[m\x1b[K]\n'}
+[2.969763] (pure_pursuit) StderrLine: {'line': b'   32 |     void pose_callback(const geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg\x1b[01;35m\x1b[K)\x1b[m\x1b[K\n'}
+[2.969828] (pure_pursuit) StderrLine: {'line': b'      |                                                                                 \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[2.969881] (pure_pursuit) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/geometry_msgs/msg/pose_stamped.hpp:7\x1b[m\x1b[K,\n'}
+[2.969938] (pure_pursuit) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:10\x1b[m\x1b[K:\n'}
+[2.969993] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/geometry_msgs/msg/detail/pose_stamped__struct.hpp:114:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kdeclared here\n'}
+[2.970142] (pure_pursuit) StderrLine: {'line': b'  114 |     \x1b[01;36m\x1b[KConstPtr\x1b[m\x1b[K;\n'}
+[2.970218] (pure_pursuit) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[2.970422] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid PurePursuit::pose_callback(const ConstPtr&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.970495] (pure_pursuit) StderrLine: {'line': b'\x1b[01m\x1b[K/home/zuki/GalacticRacing/sim_ws/src/pure_pursuit/src/pure_pursuit_node.cpp:32:73:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpose_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.970560] (pure_pursuit) StderrLine: {'line': b'   32 |     void pose_callback(\x1b[01;35m\x1b[Kconst geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg\x1b[m\x1b[K)\n'}
+[2.970613] (pure_pursuit) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[3.059246] (-) TimerEvent: {}
+[3.160167] (-) TimerEvent: {}
+[3.262977] (-) TimerEvent: {}
+[3.367766] (-) TimerEvent: {}
+[3.477272] (-) TimerEvent: {}
+[3.487608] (pure_pursuit) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable pure_pursuit_node\x1b[0m\n'}
+[3.578465] (-) TimerEvent: {}
+[3.643389] (pure_pursuit) StdoutLine: {'line': b'[100%] Built target pure_pursuit_node\n'}
+[3.656374] (pure_pursuit) CommandEnded: {'returncode': 0}
+[3.679086] (-) TimerEvent: {}
+[3.701994] (pure_pursuit) JobProgress: {'identifier': 'pure_pursuit', 'progress': 'install'}
+[3.715856] (pure_pursuit) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit'], 'cwd': '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'zuki'), ('SSH_AGENT_PID', '1472'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '3'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/zuki'), ('OLDPWD', '/home/zuki/GalacticRacing'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1109'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/zuki/GalacticRacing/sim_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'zuki'), ('JOURNAL_STREAM', '8:35155'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'zuki'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/zuki/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/zuki-VirtualBox:@/tmp/.ICE-unix/1706,unix/zuki-VirtualBox:/tmp/.ICE-unix/1706'), ('INVOCATION_ID', '54cfc10a98c34ea39fcdcb6535347169'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/29fcf961_b065_4686_b506_691d3c3c56c1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.563'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/zuki/GalacticRacing/sim_ws/install/waypoint_logger:/home/zuki/GalacticRacing/sim_ws/install/wall_follow:/home/zuki/GalacticRacing/sim_ws/install/safety_node:/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/lab5_pkg:/home/zuki/GalacticRacing/sim_ws/install/gap_follow:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/zuki/GalacticRacing/sim_ws/build/pure_pursuit'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/zuki/GalacticRacing/sim_ws/install/waypoint_logger/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/wall_follow/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/safety_node/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/particle_filter/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/lab5_pkg/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/gap_follow/lib/python3.8/site-packages:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/zuki/GalacticRacing/sim_ws/install/waypoint_logger:/home/zuki/GalacticRacing/sim_ws/install/wall_follow:/home/zuki/GalacticRacing/sim_ws/install/safety_node:/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit:/home/zuki/GalacticRacing/sim_ws/install/lab5_pkg:/home/zuki/GalacticRacing/sim_ws/install/gap_follow:/home/zuki/GalacticRacing/sim_ws/install/particle_filter:/home/zuki/GalacticRacing/sim_ws/install/f1tenth_gym_ros:/opt/ros/foxy')]), 'shell': False}
+[3.724281] (pure_pursuit) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.724649] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node\n'}
+[3.727207] (pure_pursuit) StdoutLine: {'line': b'-- Set runtime path of "/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node" to ""\n'}
+[3.727378] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/pythonpath.sh\n'}
+[3.727437] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/pythonpath.dsv\n'}
+[3.727490] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit\n'}
+[3.727542] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit/__init__.py\n'}
+[3.758328] (pure_pursuit) StdoutLine: {'line': b"Listing '/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit'...\n"}
+[3.758560] (pure_pursuit) StdoutLine: {'line': b"Compiling '/home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/python3.8/site-packages/pure_pursuit/__init__.py'...\n"}
+[3.762529] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit_node.py\n'}
+[3.762870] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/lib/pure_pursuit/interactive_node.py\n'}
+[3.762950] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/ament_index/resource_index/package_run_dependencies/pure_pursuit\n'}
+[3.763357] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/ament_index/resource_index/parent_prefix_path/pure_pursuit\n'}
+[3.763872] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.sh\n'}
+[3.763937] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.dsv\n'}
+[3.763991] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/path.sh\n'}
+[3.764316] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/environment/path.dsv\n'}
+[3.764553] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.bash\n'}
+[3.764635] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.sh\n'}
+[3.765597] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.zsh\n'}
+[3.765680] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/local_setup.dsv\n'}
+[3.766902] (pure_pursuit) StdoutLine: {'line': b'-- Installing: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/package.dsv\n'}
+[3.766999] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/ament_index/resource_index/packages/pure_pursuit\n'}
+[3.767057] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig.cmake\n'}
+[3.767109] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig-version.cmake\n'}
+[3.767166] (pure_pursuit) StdoutLine: {'line': b'-- Up-to-date: /home/zuki/GalacticRacing/sim_ws/install/pure_pursuit/share/pure_pursuit/package.xml\n'}
+[3.770125] (pure_pursuit) CommandEnded: {'returncode': 0}
+[3.781813] (-) TimerEvent: {}
+[3.846242] (pure_pursuit) JobEnded: {'identifier': 'pure_pursuit', 'rc': 0}
+[3.848062] (-) EventReactorShutdown: {}

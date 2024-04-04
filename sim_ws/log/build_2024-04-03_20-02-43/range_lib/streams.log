@@ -1,0 +1,5 @@
+[3.565s] Invoking command in '/home/zuki/GalacticRacing/sim_ws/build/range_lib': /usr/bin/cmake /home/zuki/GalacticRacing/sim_ws/range_libc -DCMAKE_INSTALL_PREFIX=/home/zuki/GalacticRacing/sim_ws/install/range_lib
+[4.059s] -- Configuring done
+[4.088s] -- Generating done
+[4.089s] -- Build files have been written to: /home/zuki/GalacticRacing/sim_ws/range_libc
+[4.240s] Invoked command in '/home/zuki/GalacticRacing/sim_ws/build/range_lib' returned '0': /usr/bin/cmake /home/zuki/GalacticRacing/sim_ws/range_libc -DCMAKE_INSTALL_PREFIX=/home/zuki/GalacticRacing/sim_ws/install/range_lib
