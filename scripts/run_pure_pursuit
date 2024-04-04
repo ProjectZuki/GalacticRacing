@@ -7,9 +7,10 @@ gnome-terminal --tab -- bash -c 'source /opt/ros/foxy/setup.bash;
                                 rviz2;
                                 exec bash'
 
-sleep 3
+sleep 5
 
-gnome-terminal --tab -- bash -c 'ros2 launch f1tenth_gym_ros gym_bridge_launch.py;
+gnome-terminal --tab -- bash -c 'source install/setup.bash;
+                                ros2 launch f1tenth_gym_ros gym_bridge_launch.py;
                                 exec bash'
 
 sleep 3

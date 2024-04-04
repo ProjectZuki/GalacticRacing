@@ -275,9 +275,9 @@ class ReactiveFollowGap(Node):
         elif data.ranges[480] < 0.8 or data.ranges[600] < 0.8:
             self.velocity = 0.8
         elif data.ranges[best_idx] > 4.5:
-            self.velocity = 3.5
+            self.velocity = 2.0
         elif data.ranges[best_idx] > 3.5:
-            self.velocity = 2.5
+            self.velocity = 1.8
         elif data.ranges[best_idx] > 2.5:
             self.velocity = 1.5
         elif data.ranges[best_idx] > 1.5:

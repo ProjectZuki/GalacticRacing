@@ -42,7 +42,7 @@ bridge:
     scan_beams: 1080
 
     # map parameters
-    map_path: '/home/zuki/GalacticRacing/sim_ws/src/f1tenth_gym_ros/maps/AEB_flex'
+    map_path: '/home/zuki/GalacticRacing/sim_ws/src/f1tenth_gym_ros/maps/TBE_Race_Day'
     map_img_ext: '.pgm'
 
     # opponent parameters

@@ -20,7 +20,7 @@ server = None
 menu_handler = MenuHandler()
 
 root_dir = "/home/zuki/GalacticRacing/sim_ws/src"
-filename = "AEB_4_2"
+filename = "TBE_Race_Day"
 
 def makeBox():
     marker = Marker()
