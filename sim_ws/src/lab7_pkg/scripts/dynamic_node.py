@@ -7,10 +7,12 @@
 import csv
 import numpy as np
 import math
+import random
 import atexit
 import os
 from scanf import scanf
 from PIL import Image # for png map processing
+import time
 
 # ==================================================================================================
 # ROS Imports
@@ -31,6 +33,7 @@ from tf_transformations import euler_from_quaternion
 
 import lab7_pkg.helper as hp
 import lab7_pkg.variables as vars
+from lab7_pkg.heap import Heap
 
 # ==================================================================================================
 # Miscellaneous Imports
@@ -80,17 +83,51 @@ class Vertex:
     def __init__(
         self,
         position : Vec2 = Vec2(),
-        parent = None,
         input_dir : float = 0.0,
-        cost : float = 0.0
+        cost : float = 0.0,
+        g_cost : float = 0.0,
+        parent = None,
+        children = []
     ):
         self.position = position
-        self.parent = parent
         self.input_dir = input_dir
         self.cost = cost
+        self.g_cost = g_cost
+        self.parent = parent
+        self.children = children
     
     def __repr__(self):
-        return f"{self.position} : {self.cost} <- ({'No Parent' if self.parent == None else 'Recursive Parent' if self.parent == self else self.parent})"
+        return f"{self.position}"
+    
+    def __eq__(self, other):
+        if isinstance(other, Vertex):
+            return self.position.__eq__(other.position)
+        return False
+    
+    def __hash__(self):
+        return self.position.__hash__()
+
+class Edge:
+    def __init__(
+        self,
+        start : Vertex = None,
+        end   : Vertex = None,
+        cost  : float  = 0.0
+    ):
+        self.start = start
+        self.end   = end
+        self.cost  = cost
+    
+    def __repr__(self):
+        return f"{self.start} -> {self.end} : {self.cost}"
+
+    def __eq__(self, other):
+        if isinstance(other, Edge):
+            return self.start.__eq__(other.start) and self.end.__eq__(other.end)
+        return False
+    
+    def __hash__(self):
+        return hash((self.start.__hash__(), self.end.__hash__()))
 
 # ==================================================================================================
 # Dynamic Node Class
@@ -118,6 +155,7 @@ class Dynamic(Node):
         sample_grid_topic = '/sample_grid'
         path_topic        = '/path_view'
         goals_topic       = '/goal_view'
+        goal_track_topic  = '/goal_track'
         
         # ==========================================================================================
         # Subscribers / Publishers
@@ -134,9 +172,10 @@ class Dynamic(Node):
         self.local_occ_pub  = self.create_publisher(OccupancyGrid, local_occ_topic, 10)
 
         # Pathing
-        self.sample_grid_pub = self.create_publisher(MarkerArray, sample_grid_topic, 10)
-        self.path_pub        = self.create_publisher(MarkerArray, path_topic, 10)
-        self.goals_pub       = self.create_publisher(MarkerArray, goals_topic, 10)
+        self.sample_grid_pub = self.create_publisher(MarkerArray, sample_grid_topic, 1)
+        self.path_pub        = self.create_publisher(MarkerArray, path_topic, 1)
+        self.goals_pub       = self.create_publisher(MarkerArray, goals_topic, 1)
+        self.goal_track_pub  = self.create_publisher(LaserScan, goal_track_topic, 1)
         
         # ==========================================================================================
         # Runtime Variables
@@ -154,9 +193,11 @@ class Dynamic(Node):
         self.map_config      : Dict[str, Any]    = {}  # Map configuration details
         
         # Pathing
-        self.curr_goal  : Vertex       = Vertex()      # Current goal as a node
-        self.known_free : Vec2         = Vec2(0, 100)  # Cell known to be in free space
-        self.nodes      : List[Vertex] = []            # List of nodes for I-RRT*
+        self.curr_goal  : Vertex                     = Vertex()      # Current goal as a node
+        self.known_free : Vec2                       = Vec2(0, 40)   # Known cells in free space
+        self.nodes      : List[Vertex]               = []            # List of nodes for I-RRT*
+        self.edges      : Dict[Edge, float]          = {}            # Maps an edge to a cost
+        self.path       : List[Vertex]               = []            # Current path to curr_goal
         
         # ==========================================================================================
         # Runtime Constants
@@ -164,8 +205,8 @@ class Dynamic(Node):
         
         # Occupancy Grid
         self.cell_size   : float = 0.05
-        self.local_width : int   = 40
-        self.local_depth : int   = 40
+        self.local_width : int   = 50
+        self.local_depth : int   = 50
         self.bubble_offs : List[Vec2] = [
             Vec2( 0,  0), Vec2( 0, -1), Vec2( 1,  0), Vec2(-1,  0), Vec2( 0,  1), Vec2( 1,  1),
             Vec2( 1, -1), Vec2(-1,  1), Vec2(-1, -1), Vec2( 0, -2), Vec2( 2,  0), Vec2(-2,  0),
@@ -205,8 +246,8 @@ class Dynamic(Node):
         """
         
         while True:
-            path : str = input("Enter full path to 'src' (or equivalent) directory: ")
-            # path : str = '/home/vy/GalacticRacing/sim_ws/src'
+            # path : str = input("Enter full path to 'src' (or equivalent) directory: ")
+            path : str = '/home/vy/GalacticRacing/sim_ws/src'
             
             if os.path.exists(path):
                 return path
@@ -222,8 +263,8 @@ class Dynamic(Node):
         """
         
         while True:
-            filename : str = input("Enter global occupancy filename: ")
-            # filename : str = 'AEB_flexito.csv'
+            # filename : str = input("Enter global occupancy filename: ")
+            filename : str = 'TBE4_25.csv'
             
             if os.path.exists(self.root_dir + '/lab7_pkg/occ_grids/' + filename):
                 return self.root_dir + '/lab7_pkg/occ_grids/' + filename
@@ -239,8 +280,8 @@ class Dynamic(Node):
         """
         
         while True:
-            filename : str = input("Enter goal marker filename: ")
-            # filename : str = 'AEB_flexito.csv'
+            # filename : str = input("Enter goal marker filename: ")
+            filename : str = 'TBE4_25.csv'
             
             if os.path.exists(self.root_dir + '/lab7_pkg/goals/' + filename):
                 return self.root_dir + '/lab7_pkg/goals/' + filename
@@ -256,8 +297,8 @@ class Dynamic(Node):
         """
         
         while True:
-            filename : str = input("Enter map filename (no extension): ")
-            # filename : str = 'AEB_flexito'
+            # filename : str = input("Enter map filename (no extension): ")
+            filename : str = 'TBE4_25'
             
             if (
                 os.path.exists(self.root_dir + '/particle_filter/maps/' + filename + '.yaml') and
@@ -486,31 +527,60 @@ class Dynamic(Node):
                 else:
                     if self.local_cell(occluded_cell):
                         self.bubble(occluded_cell, self.local_occ_grid)
-
-            self.curr_goal = Vertex(
-                position=Vec2(
-                    x=round(-1.8/0.05),
-                    y=round(3.1/0.05)
-                )
-            )
-            
-            print("I-RRT* Starting")
-
-            self.irrt_star(
-                start=Vertex(position=self.cell_pos),
-                goal=self.curr_goal,
-                max_iter=1000,
-                max_distance=10.0,
-                goal_sample_rate=0.1
-            )
-            
-            print("Rendering Path")
-            
-            self.render_path()
-            
-            print("Rendering Local Occupancy Grid")
             
             self.render_local_occ()
+
+            self.curr_goal, dist = self.get_goal()
+
+            # self.irrt_star(
+            #     start=Vertex(
+            #         position=self.cell_pos,
+            #         input_dir=self.rotation,
+            #         cost=0.0
+            #     ),
+            #     goal=self.curr_goal,
+            #     max_iter=300,
+            #     max_distance=10.0
+            # )
+
+            self.a_star(
+                start=Vertex(
+                    position=self.cell_pos
+                ),
+                goal=self.curr_goal
+            )
+
+            # Drive towards second node of path
+            if self.path != None and len(self.path) > 2:
+                target : Vertex = self.path[2]
+
+                vc = (np.cos(self.rotation), np.sin(self.rotation))
+                v3 = (
+                    target.position.x * self.cell_size - self.position.x,
+                    target.position.y * self.cell_size - self.position.y
+                )
+
+                mag_v3 = (v3[0] * v3[0] + v3[1] * v3[1]) ** 0.5
+                vc_cross_v3 = vc[0] * v3[1] - vc[1] * v3[0]
+                vc_dot_v3 = vc[0] * v3[0] + vc[1] * v3[1]
+
+                abs_angle = np.arccos(vc_dot_v3 / mag_v3)
+                angle = (-1 if vc_cross_v3 < 0 else 1) * abs_angle
+
+                self.track_pt = (dist, angle)
+
+                # clamp steering angle to valid range
+                if angle < math.radians(-20.0):
+                    angle = math.radians(-20.0)
+                elif angle > math.radians(20.0):
+                    angle = math.radians(20.0)
+
+                drive_msg : AckermannDriveStamped = AckermannDriveStamped()
+
+                drive_msg.drive.steering_angle = angle
+                drive_msg.drive.speed = 1.0
+
+                self.drive_pub.publish(drive_msg)
     
     def pose_callback(self, pose_msg : PoseStamped) -> None:
         """
@@ -549,19 +619,6 @@ class Dynamic(Node):
     # ==============================================================================================
     # Visualization Functions
     # ==============================================================================================
-    
-    def float_to_cell_coordinate(self, x, y):
-        # Calculate scaled coordinates in terms of cell units
-        x_scaled = x / self.cell_size
-        y_scaled = y / self.cell_size
-
-        # Calculate row index
-        row = self.map_config["height"] - 1 - int(y_scaled * (self.map_config["height"] - 1))
-
-        # Calculate column index
-        col = int(x_scaled * (self.map_config["width"] - 1))
-
-        return row, col
     
     def render_global_occ(self) -> None:
         """
@@ -646,7 +703,6 @@ class Dynamic(Node):
         local_occ.data = [0] * num_cells
         
         origin_pt : Vec2f = self.map_config["origin"]
-        car_pt    : Vec2f = self.position
         
         C, R = self.map_config["width"], self.map_config["height"]
         
@@ -685,14 +741,108 @@ class Dynamic(Node):
         
         self.local_occ_pub.publish(local_occ)
     
-    def render_sample_grid(self) -> None:
+    def render_tree(self) -> None:
         """
-        Create and publish a MarkerArray message defining the local sample space around the car to
-        the rviz2 client
+        Create and publish a MarkerArray message defining the pathing tree within the local
+        occupancy space
         
         Returns:
             None
         """
+        
+        markers : MarkerArray = MarkerArray()
+        
+        marker : Marker = Marker()
+        
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "ns_rrt_tree"
+        
+        marker.id = 0
+        marker.type = Marker.LINE_LIST
+        marker.action = Marker.DELETEALL
+        
+        markers.markers.append(marker)
+        
+        self.sample_grid_pub.publish(markers)
+        
+        markers.markers.clear()
+        
+        j = 1
+        
+        # add nodes to graph
+        # for node in self.nodes:
+        #     marker : Marker = Marker()
+            
+        #     marker.header.frame_id = "map"
+        #     marker.header.stamp = self.get_clock().now().to_msg()
+        #     marker.ns = "ns_rrt_tree"
+            
+        #     marker.id = j
+        #     marker.type = Marker.SPHERE
+        #     marker.action = Marker.ADD
+            
+        #     marker.pose.position.x = node.position.x * 0.05
+        #     marker.pose.position.y = node.position.y * 0.05
+        #     marker.pose.position.z = 0.8
+            
+        #     marker.scale.x = 0.05
+        #     marker.scale.y = 0.05
+        #     marker.scale.z = 0.05
+            
+        #     marker.pose.orientation.x = 0.0
+        #     marker.pose.orientation.y = 0.0
+        #     marker.pose.orientation.z = 0.0
+        #     marker.pose.orientation.w = 1.0
+            
+        #     marker.color.r = 0.0
+        #     marker.color.g = 1.0
+        #     marker.color.b = 0.0
+        #     marker.color.a = 0.8
+            
+        #     markers.markers.append(marker)
+            
+        #     j += 1
+        
+        # add edges to graph
+        for edge, _ in self.edges.items():
+            edge_marker : Marker = Marker()
+
+            edge_marker.header.frame_id = "map"
+            marker.header.stamp = self.get_clock().now().to_msg()
+            edge_marker.ns = "ns_rrt_tree"
+            
+            edge_marker.id = j
+            edge_marker.type = Marker.LINE_LIST
+            edge_marker.action = Marker.ADD
+            
+            edge_marker.scale.x = 0.02
+            
+            edge_marker.color.r = 0.0
+            edge_marker.color.g = 0.0
+            edge_marker.color.b = 1.0
+            edge_marker.color.a = 1.0
+            
+            # Add end points of the line
+            start_pt = Point()
+            start_pt.x = edge.start.position.x * 0.05
+            start_pt.y = edge.start.position.y * 0.05
+            start_pt.z = 0.8
+            
+            edge_marker.points.append(start_pt)
+            
+            end_pt = Point()
+            end_pt.x = edge.end.position.x * 0.05
+            end_pt.y = edge.end.position.y * 0.05
+            end_pt.z = 0.8
+            
+            edge_marker.points.append(end_pt)
+            
+            markers.markers.append(edge_marker)
+            
+            j += 1
+        
+        self.sample_grid_pub.publish(markers)
     
     def render_path(self) -> None:
         """
@@ -702,8 +852,6 @@ class Dynamic(Node):
         Returns:
             None
         """
-        
-        print("  Clearing Render.")
         
         markers : MarkerArray = MarkerArray()
         
@@ -724,11 +872,9 @@ class Dynamic(Node):
         
         j = 1
         
-        print("  Iterating Over Nodes.")
+        print("Reconstructing Path.")
         
-        for node in self.reconstruct_path(self.curr_goal):
-            print("  Node:", node.position)
-            
+        for node in self.path:
             marker : Marker = Marker()
             
             marker.header.frame_id = "map"
@@ -743,9 +889,9 @@ class Dynamic(Node):
             marker.pose.position.y = node.position.y * 0.05
             marker.pose.position.z = 1.0
             
-            marker.scale.x = 0.04
-            marker.scale.y = 0.04
-            marker.scale.z = 0.04
+            marker.scale.x = 0.05
+            marker.scale.y = 0.05
+            marker.scale.z = 0.05
             
             marker.pose.orientation.x = 0.0
             marker.pose.orientation.y = 0.0
@@ -760,20 +906,45 @@ class Dynamic(Node):
             markers.markers.append(marker)
             
             j += 1
+            
+            if node.parent != None:
+                edge_marker : Marker = Marker()
+
+                edge_marker.header.frame_id = "map"
+                edge_marker.header.stamp = self.get_clock().now().to_msg()
+                edge_marker.ns = "ns_rrt_path"
+                
+                edge_marker.id = j
+                edge_marker.type = Marker.LINE_LIST
+                edge_marker.action = Marker.ADD
+                
+                edge_marker.scale.x = 0.02
+                
+                edge_marker.color.r = 0.0
+                edge_marker.color.g = 0.0
+                edge_marker.color.b = 1.0
+                edge_marker.color.a = 1.0
+                
+                # Add end points of the line
+                start_pt = Point()
+                start_pt.x = node.parent.position.x * 0.05
+                start_pt.y = node.parent.position.y * 0.05
+                start_pt.z = 0.8
+                
+                edge_marker.points.append(start_pt)
+                
+                end_pt = Point()
+                end_pt.x = node.position.x * 0.05
+                end_pt.y = node.position.y * 0.05
+                end_pt.z = 0.8
+                
+                edge_marker.points.append(end_pt)
+            
+                markers.markers.append(edge_marker)
+                
+                j += 1
         
-        if len(markers.markers) > 0:
-            self.path_pub.publish(markers)
-        
-        print("  Done.")
-    
-    def render_goals(self) -> None:
-        """
-        Create and publish a MarkerArray message defining the goals around the map to the rviz2
-        client
-        
-        Returns:
-            None
-        """
+        self.path_pub.publish(markers)
     
     # ==============================================================================================
     # Occupancy Grid Functions
@@ -804,12 +975,12 @@ class Dynamic(Node):
         """
         
         p1 : Vec2  = Vec2(
-            x=self.cell_pos.x + round(self.local_depth * np.cos(self.rotation)),
-            y=self.cell_pos.y + round(self.local_width * np.sin(self.rotation))
+            x=self.cell_pos.x + round((self.local_depth - 15) * np.cos(self.rotation)),
+            y=self.cell_pos.y + round((self.local_width - 15) * np.sin(self.rotation))
         )
         
-        cos = np.cos(self.rotation)
-        sin = np.sin(self.rotation)
+        cos = np.cos(0.0)
+        sin = np.sin(0.0)
         x_diff = position.x - p1.x
         y_diff = position.y - p1.y
         
@@ -856,38 +1027,30 @@ class Dynamic(Node):
     def distance(self, v1 : Vec2, v2 : Vec2) -> float:
         return np.sqrt((v1.position.x - v2.position.x)**2 + (v1.position.y - v2.position.y)**2)
     
-    def generate_random_node(self, goal : Vertex, ellipse_center : Vec2, ellipse_axes : List[int], goal_sample_rate : float) -> Vertex:
-        if np.random.rand() < goal_sample_rate:
-            return goal
-        else:
-            while True:
-                x = np.random.randint(0, self.map_config["width"])
-                y = np.random.randint(0, self.map_config["height"])
-                
-                if ((x - ellipse_center.x) / ellipse_axes[0])**2 + ((y - ellipse_center.y) / ellipse_axes[1])**2 <= 1:
-                    return Vertex(
-                        position=Vec2(x, y)
-                    )
-    def nearest_node(self, random_node : Vertex):
-        nearest = self.nodes[0]
-        min_dist = self.distance(self.nodes[0], random_node)
+    def nearest(self, nodes : List[Vertex], node : Vertex) -> int:
+        min_dist = self.distance(node, nodes[0])
+        min_idx  = 0
         
-        for node in self.nodes[1:]:
-            dist = self.distance(node, random_node)
-            
+        for i in range(1, len(nodes)):
+            dist = self.distance(nodes[i], node)
             if dist < min_dist:
-                nearest = node
                 min_dist = dist
+                min_idx = i
         
-        return nearest
+        return min_idx
     
     def steer(self, from_node, to_node, max_distance):
-        if self.distance(from_node, to_node) < max_distance:
+        if self.distance(from_node, to_node) <= max_distance:
             return to_node
         else:
-            theta = np.arctan2(to_node.position.y - from_node.position.y, to_node.position.x - from_node.position.x)
+            theta = np.arctan2(
+                to_node.position.y - from_node.position.y,
+                to_node.position.x - from_node.position.x
+            )
             return Vertex(
-                position=Vec2(round(from_node.position.x + max_distance * np.cos(theta)), round(from_node.position.y + max_distance * np.sin(theta)))
+                position=Vec2(
+                    x=from_node.position.x + round(max_distance * np.cos(theta)),
+                    y=from_node.position.y + round(max_distance * np.sin(theta)))
             )
     
     def get_line(self, x0, y0, x1, y1):
@@ -958,67 +1121,441 @@ class Dynamic(Node):
                 return False
         
         return True
-
-    def rewire(self, new_node, max_distance):
-        for node in self.nodes:
-            if node == new_node.parent:
-                continue
-            if self.distance(node, new_node) > max_distance:
-                continue
-            if node.cost > new_node.cost + self.distance(node, new_node) and self.is_collision_free(node, new_node):
-                node.parent = new_node
-                node.cost = new_node.cost + self.distance(node, new_node)
     
-    def irrt_star(self, start : Vertex, goal : Vertex, max_iter : int, max_distance : float, goal_sample_rate : float) -> None:
-        self.nodes = [start]
-        
-        ellipse_axes = [
-            max(self.map_config["width"], self.map_config["height"]),
-            max(self.map_config["width"], self.map_config["height"])
-        ]
-        
-        for _ in range(max_iter):
-            ellipse_center : Vec2 = Vec2(goal.position.x, goal.position.y)
-            random_node    : Vertex = self.generate_random_node(goal, ellipse_center, ellipse_axes, goal_sample_rate)
-            nearest        : Vertex = self.nearest_node(random_node)
-            new_node       : Vertex = self.steer(nearest, random_node, max_distance)
+    def cost(self, from_node : Vertex, to_node : Vertex) -> float:
+        # turn_req : float = abs(from_node.input_dir - to_node.input_dir)
+        return self.distance(from_node, to_node)# + turn_req
+    
+    def sample_from_ellipse(self, a : float, b : float) -> Vec2f:
+        while True:
+            x = random.uniform(-a, a)
+            y = random.uniform(-b, b)
             
-            if self.is_collision_free(nearest, new_node):
-                new_node.parent = nearest
-                new_node.cost = nearest.cost + self.distance(nearest, new_node)
-                self.nodes.append(new_node)
-                
-                self.rewire(new_node, max_distance)
-                
-                if self.distance(new_node, goal) < max_distance:
-                    goal.parent = new_node
-                    goal.cost = new_node.cost + self.distance(new_node, goal)
-                    
-                    self.rewire(goal, max_distance)
-                    
-                    # Update ellipse size
-                    # progress = len(self.nodes) / max_iter
-                    # ellipse_axes = [
-                    #     max(self.map_config["width"], self.map_config["height"]) * np.sqrt(1 - progress),
-                    #     max(self.map_config["width"], self.map_config["height"]) * np.sqrt(1 - progress)
-                    # ]
-                    
-                    return
+            if (x**2 / a**2) + (y**2 / max(b, 0.001)**2) <= 1:
+                return Vec2f(
+                    x=x,
+                    y=y
+                )
     
-    def reconstruct_path(self, goal_node : Vertex):
+    def near(self, nodes : List[Vertex], new_node : Vertex, max_dist : float) -> List[Vertex]:
+        near_list : List[Vertex] = []
+        
+        for node in nodes:
+            if node != new_node and self.distance(node, new_node) <= max_dist:
+                near_list.append(node)
+        
+        return near_list
+    
+    def sample(self, ellipse_radius : float, ellipse_height : float, theta : float, start : Vertex, goal : Vertex, goal_sample_rate : float) -> Vertex:
+        if random.random() <= goal_sample_rate:
+            return goal
+
+        # Determine midpoint cell between start and goal
+        ellipse_center : Vertex = Vertex(
+            position=Vec2(
+                x=round((start.position.x + goal.position.x) / 2),
+                y=round((start.position.y + goal.position.y) / 2)
+            )
+        )
+
+        sin : float = np.sin(theta)
+        cos : float = np.cos(theta)
+        
+        samp_pt : Vec2f = self.sample_from_ellipse(ellipse_radius, ellipse_height)
+        
+        return Vertex(
+            position=Vec2(
+                x=ellipse_center.position.x + round(samp_pt.x * cos - samp_pt.y * sin),
+                y=ellipse_center.position.y + round(samp_pt.x * sin + samp_pt.y * cos)
+            )
+        )
+    
+    def rewire(self, nodes : List[Vertex], start : Vertex, goal : Vertex, rewire_distance : float = 20.0) -> None:
+        pq : Heap[Tuple[Vertex, float]] = Heap([(start, 0.0)], lambda x,y: x[1] < y[1])
+        dists : Dict[Vertex, float] = {node: float("inf") for node in nodes}
+        parents : Dict[Vertex, Vertex] = {node: None for node in nodes}
+        dists[start] = 0.0
+        
+        while not pq.empty():
+            curr_node, curr_cost = pq.pop()
+            
+            # Check if current node has been visited before
+            if curr_cost > dists[curr_node]:
+                continue
+            
+            neighbor_list : List[Vertex] = self.near(nodes, curr_node, rewire_distance)
+
+            for neigh in neighbor_list:
+                new_cost = dists[curr_node] + self.cost(curr_node, neigh)
+            
+                if new_cost < dists[neigh] and self.is_collision_free(curr_node, neigh):
+                    dists[neigh] = new_cost
+                    parents[neigh] = curr_node
+
+                    pq.push((neigh, new_cost))
+
+        # Reconstruct min-cost graph
+        self.edges = {}
+        
+        for node in nodes:
+            if node != start:
+                parent = parents[node] if parents[node] != None else node.parent
+                
+                self.edges[Edge(
+                    start=parent,
+                    end=node,
+                    cost=self.cost(parent, node)
+                )] = self.cost(parent, node)
+                
+                node.parent = parent
+        
+        self.path = self.reconstruct_path(goal)
+    
+    def _rewire(self, nodes : List[Vertex], new_node : Vertex) -> None:
+        for node in self.nodes:
+            if node != new_node:
+                curr_cost : float = new_node.cost
+                new_cost  : float = node.cost + self.cost(node, new_node)
+
+                if curr_cost > new_cost:
+                    parent : Vertex = new_node.parent
+
+                    old_edge : Edge = Edge(
+                        start=parent,
+                        end=new_node
+                    )
+
+                    new_edge : Edge = Edge(
+                        start=node,
+                        end=new_node,
+                        cost=self.cost(node, new_node)
+                    )
+
+                    del self.edges[old_edge]
+
+                    new_node.parent = node
+                    self.edges[new_edge] = new_edge.cost
+
+    def valid_path(self, start : Vertex, end_node : Vertex) -> bool:
+        visited : Dict[Vertex, bool] = {}
+
+        curr_node = end_node
+
+        while curr_node != None and curr_node != start:
+            if curr_node in visited:
+                return False # cycle detected
+            
+            visited[curr_node] = True
+
+            curr_node = curr_node.parent
+        
+        return True
+
+    def irrt_star(self, start : Vertex, goal : Vertex, max_iter : int, max_distance : float) -> None:
+        goal_sample_rate = 0.2
+        epsilon = 0.25
+        
+        # Setup graph
+        self.nodes : List[Vertex]     = [start]
+        self.edges : Dict[Edge, bool] = {}
+        self.path : List[Vertex] = []
+
+        # Setup
+        ellipse_radius : float = self.distance(start, goal)
+        ellipse_height : float = ellipse_radius
+
+        # Determine orientation of ellipse in global space
+        theta : float = np.arctan2(
+            goal.position.y - start.position.y,
+            goal.position.x - start.position.x
+        )
+
+        X_soln : Heap[Vertex] = Heap([], lambda x,y: x.cost < y.cost)
+
+        path_connects : bool = False
+
+        while not path_connects:
+            for _ in range(max_iter):
+                # Sample a random point within the ellipse
+                random_node : Vertex = self.sample(ellipse_radius, ellipse_height, theta, start, goal, goal_sample_rate)
+
+                # Find nearest node in the tree
+                nearest_idx = self.nearest(self.nodes, random_node)
+
+                nearest_node : Vertex = self.nodes[nearest_idx]
+
+                # Extend the tree towards the random point
+                new_node = self.steer(nearest_node, random_node, max_distance)
+
+                # If no collisions are detected between nearest and new nodes
+                if self.is_collision_free(nearest_node, new_node):
+                    # Add the new node to the graph
+                    new_node.parent = nearest_node
+                    self.nodes.append(new_node)
+
+                    new_edge : Edge = Edge(
+                        start=nearest_node,
+                        end=new_node,
+                        cost=self.cost(nearest_node, new_node)
+                    )
+
+                    self.edges[new_edge] = new_edge.cost
+
+                    # Rewire the graph to determine the current best path to all nodes
+                    # from the start
+                    self.rewire(start, goal)
+                    # self._rewire(new_node)
+
+                    self.render_tree()
+                    # time.sleep(0.05)
+
+                    # Check if the new node is close to the goal
+                    if self.distance(new_node, goal) <= max_distance:
+                        print("Located Goal")
+
+                        # Check that node connects back to the start
+                        if self.valid_path(start, new_node):
+                            # Shrink the ellipse normal to narrow down new solutions
+                            ellipse_height *= (1 - epsilon)
+
+                            # Add the new node to the solution set
+                            X_soln.push(new_node)
+
+                            path_connects = True
+
+                            # if len(X_soln.content) >= 10:
+                            #     break
+
+                            if ellipse_height <= 5:
+                                break
+        
+        goal.parent = X_soln.top()
+        self.nodes.append(goal)
+
+        self.rewire(start, goal)
+        self.path = self.reconstruct_path(goal)
+        
+        self.render_tree()
+    
+    def cell_in_ellipse(self, start : Vertex, goal : Vertex, sample : Vertex) -> bool:
+        theta : float = np.arctan2(
+            goal.position.y - start.position.y,
+            goal.position.x - start.position.x
+        )
+
+        major_len : float = self.distance(start, goal)
+
+        minor_len : float = 40
+
+        transl_node : Vertex = Vertex(
+            position=Vec2(
+                x=sample.position.x - goal.position.x,
+                y=sample.position.y - goal.position.y
+            )
+        )
+
+        sin = np.sin(theta)
+        cos = np.cos(theta)
+
+        trans_pt : Vertex = Vertex(
+            position=Vec2(
+                x=round(transl_node.position.x * cos + transl_node.position.y * sin),
+                y=round(transl_node.position.x * -sin + transl_node.position.y * cos)
+            )
+        )
+
+        return (trans_pt.position.x / major_len)**2 + (trans_pt.position.y / minor_len)**2 <= 1.0
+
+    def a_star(self, start : Vertex, goal : Vertex) -> None:
+        local_center_cell : Vertex = Vertex(
+            position=Vec2(
+                x=self.cell_pos.x + round((self.local_depth - 15) * np.cos(self.rotation)),
+                y=self.cell_pos.y + round((self.local_width - 15) * np.sin(self.rotation))
+            )
+        )
+
+        self.nodes = [goal]
+        self.edges = {}
+        self.path = []
+
+        for i in range(-(self.local_depth // 3), self.local_depth // 3 + 1):
+            for j in range(-(self.local_width // 3), self.local_width // 3 + 1):
+                c_x = local_center_cell.position.x + i * 3
+                c_y = local_center_cell.position.y + j * 3
+
+                if (
+                    Vec2(x=c_x, y=c_y) in self.free_space_grid and
+                    Vec2(x=c_x, y=c_y) not in self.local_occ_grid and
+                    self.cell_in_ellipse(start, goal, Vertex(
+                        position=Vec2(
+                            x=c_x,
+                            y=c_y
+                        )
+                    ))
+                ):
+                    # Select vertex as a node
+                    self.nodes.append(Vertex(
+                        position=Vec2(
+                            x=c_x,
+                            y=c_y
+                        )
+                    ))
+
+        heur : Callable[[Vertex], float] = lambda x: self.cost(x, goal)
+
+        nearest_idx : int = self.nearest(self.nodes, start)
+        nearest_node : Vertex = self.nodes[nearest_idx]
+        
+        pq : Heap[Vertex] = Heap([nearest_node], lambda x,y: x.g_cost + heur(x) < y.g_cost + heur(y) or (x.g_cost + heur(x) == y.g_cost + heur(y) and heur(x) < heur(y)))
+
+        closed_set : Dict[Vertex, bool] = {}
+
+        rewire_distance : float = 10.0
+
+        while not pq.empty():
+            curr_node = pq.pop()
+            closed_set[curr_node] = True
+
+            if curr_node == goal: 
+                self.render_tree()
+                
+                self.path = self.reconstruct_path(goal)
+                self.rewire(self.path, nearest_node, goal, rewire_distance)
+                
+                self.render_path()
+                break
+            
+            for neigh in self.near(self.nodes, curr_node, rewire_distance):
+                if neigh in closed_set or not self.is_collision_free(curr_node, neigh):
+                    continue
+
+                newCost = curr_node.g_cost + self.distance(curr_node, neigh)
+
+                if not pq.contains(neigh) or newCost < neigh.g_cost + self.distance(curr_node, neigh):
+                    neigh.g_cost = newCost
+                    neigh.parent = curr_node
+
+                    old_edge : Edge = Edge(start=neigh.parent, end=neigh)
+                    new_edge : Edge = Edge(start=curr_node, end=neigh, cost=self.distance(curr_node, neigh))
+
+                    if old_edge in self.edges:
+                        del self.edges[old_edge]
+                    
+                    self.edges[new_edge] = self.distance(curr_node, neigh)
+
+                    if not pq.contains(neigh):
+                        pq.push(neigh)
+    
+    def reconstruct_path(self, goal_node : Vertex) -> List[Vertex]:
         path = []
         current = goal_node
         
-        print("  Reconstructing Path.")
-        print("   ", "No Goal" if current == None else current.parent)
-        
-        while current != None and current.parent != current:
-            path.insert(0, current)
+        while current != None:
+            path.append(current)
             current = current.parent
         
-        print("  Done Reconstructing.")
+        return path[::-1]
+    
+    def neighbors(self, node : Vertex) -> List[Vertex]:
+        offs : List[Vec2] = [
+            Vec2(-1, -1), Vec2( 0, -1), Vec2( 1, -1),
+            Vec2(-1,  0),               Vec2( 1,  0),
+            Vec2(-1,  1), Vec2( 0,  1), Vec2( 1,  1)
+        ]
         
-        return path
+        neighs : List[Vertex] = []
+        
+        for v in offs:
+            new_pos : Vec2 = Vec2(x=node.position.x + v.x, y=node.position.y + v.y)
+            
+            if new_pos not in self.global_occ_grid:
+                neighs.append(Vertex(position=new_pos))
+
+        return neighs
+    
+    def compute_nearest(self, min_distance : float, max_distance : float):
+        processed : int = 0
+        
+        for cell_pos, _ in self.free_space_grid.items():
+            vert : Vertex = Vertex(
+                position=cell_pos
+            )
+            
+            nearest_list : List[Vertex] = []
+            open_heap    : Heap[Vertex] = Heap([vert], lambda x,y: self.distance(vert, x) < self.distance(vert, y))
+            closed_set   : Dict[Vertex, bool] = {}
+            nearest_heap : Heap[Vertex] = Heap([], lambda x,y: self.distance(vert, x) < self.distance(vert, y))
+            
+            while (
+                len(open_heap.content) > 0 and
+                self.distance(vert, open_heap.content[0]) <= max_distance
+            ):
+                curr_node : Vertex = open_heap.pop()
+                closed_set[curr_node] = True
+                
+                for node in self.neighbors(vert):
+                    if node in closed_set:
+                        continue
+                    
+                    if not open_heap.contains(node):
+                        open_heap.push(node)
+                        
+                        if (
+                            self.distance(vert, node) >= min_distance and
+                            self.distance(vert, node) <= max_distance
+                        ):
+                            nearest_heap.push(node)
+            
+            while len(nearest_heap.content) > 0:
+                nearest_list.append(nearest_heap.pop())
+            
+            self.near_map[vert] = nearest_list
+            
+            processed += 1
+            
+            print(f"Progress: {processed} / {len(self.free_space_grid)}")
+    
+    def get_goal(self) -> Tuple[Vertex, float]:
+        # find closest point to car
+        min_dist = -1.0
+        min_idx = 0
+
+        for i in range(len(self.goal_list)):
+            point = self.goal_list[i]
+
+            dist = ((point.x - self.position.x)**2 + (point.y - self.position.y)**2)**0.5
+
+            if min_dist < 0 or dist < min_dist:
+                min_dist = dist
+                min_idx = i
+        
+        # find first point ahead of min_pt that is beyond some minimum distance
+        # that is not in a collision
+        min_dist_thresh = 1.0
+
+        targ_pt = None
+        max_dist = min_dist
+
+        idx = (min_idx + 1) % len(self.goal_list)
+
+        while idx != min_idx:
+            point = self.goal_list[idx]
+
+            dist = ((point.x - self.position.x)**2 + (point.y - self.position.y)**2)**0.5
+
+            if dist > min_dist_thresh:
+                targ_pt = point
+                max_dist = dist
+                break
+            
+            idx = (idx + 1) % len(self.goal_list)
+        
+        return Vertex(
+            position=Vec2(
+                x=round(targ_pt.x / self.cell_size),
+                y=round(targ_pt.y / self.cell_size)
+            )
+        ), max_dist
 
 def main(args=None):
     rclpy.init(args=args)
