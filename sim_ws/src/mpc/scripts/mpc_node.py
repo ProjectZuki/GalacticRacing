@@ -13,8 +13,15 @@ from scipy.sparse import block_diag, csc_matrix, diags
 from sensor_msgs.msg import LaserScan
 from utils import nearest_point
 
-# TODO CHECK: include needed ROS msg type headers and libraries
+import helper as hp
 
+# TODO CHECK: include needed ROS msg type headers and libraries
+from visualization_msgs.msg import Marker, MarkerArray
+
+# refresh values
+POSE_REFRESH    : int = 10
+SCAN_REFRESH    : int = 10
+DRIVE_REFRESH   : int = 10
 
 @dataclass
 class mpc_config:
@@ -69,8 +76,35 @@ class MPC(Node):
     """
     def __init__(self):
         super().__init__('mpc_node')
+        # topics
+        pose_topic      = "/pf/viz/inferred_pose"    # TODO which pose?
+        drive_topic     = "/drive"
+        scan_topic      = "/scan"
+        odom_topic      = "/ego_racecar/odom"
+        marker_topic    = "/visualization_marker_array"
+        path_topic      = "/path_tracker"
+        # TODO need more topics
+
         # TODO: create ROS subscribers and publishers
         #       use the MPC as a tracker (similar to pure pursuit)
+        # subscribers
+        self.pose_sub = self.create_subscription(
+            PoseStamped, pose_topic, self.pose_callback, 10
+        )
+        self.scan_sub = self.create_subscription(
+            LaserScan, scan_topic, self.scan_callback, 10
+        )
+
+        # publishers
+        self.drive_pub = self.create_publisher(
+            AckermannDriveStamped, drive_topic, 10
+        )
+        self.tracker_pub = self.create_publisher(
+            Marker, path_topic, 10
+        )
+        # TODO: need more
+
+
         # TODO: get waypoints here
         self.waypoints = None
 
