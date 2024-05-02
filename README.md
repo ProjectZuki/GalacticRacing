@@ -18,7 +18,9 @@ The following features are to be implemented:
 - [x] Wall Follow
 - [x] Follow the Gap
 - [x] SLAM (Simultaneous Localization and Mapping)
-- [ ] Pure Pursuit
+- [x] Pure Pursuit
+- [x] RRT* (our version utilizing I-RRT* and A*)
+- [ ] mpc
 
 ## Contributing
 
