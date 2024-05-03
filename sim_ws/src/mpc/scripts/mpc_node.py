@@ -16,7 +16,13 @@ from utils import nearest_point
 import helper as hp
 
 # TODO CHECK: include needed ROS msg type headers and libraries
+from nav_msgs.msg import Path
+from geometry_msgs.msg import Pose, PoseStamped
+from sensor_msgs.msg import LaserScan
+from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 from visualization_msgs.msg import Marker, MarkerArray
+import math
+from tf_transformations import euler_from_quaternion
 
 # refresh values
 POSE_REFRESH    : int = 10
@@ -80,14 +86,14 @@ class MPC(Node):
         pose_topic      = "/pf/viz/inferred_pose"    # TODO which pose?
         drive_topic     = "/drive"
         scan_topic      = "/scan"
-        odom_topic      = "/ego_racecar/odom"
         marker_topic    = "/visualization_marker_array"
         path_topic      = "/path_tracker"
+        tracker_topic   = "/path_tracker"
         # TODO need more topics
 
         # TODO: create ROS subscribers and publishers
         #       use the MPC as a tracker (similar to pure pursuit)
-        # subscribers
+        # ======================== subscribers ========================
         self.pose_sub = self.create_subscription(
             PoseStamped, pose_topic, self.pose_callback, 10
         )
@@ -95,14 +101,20 @@ class MPC(Node):
             LaserScan, scan_topic, self.scan_callback, 10
         )
 
-        # publishers
+        # ==========================publishers =========================
+        self.marker_pub = self.create_publisher(
+            MarkerArray, marker_topic, 10
+        )
         self.drive_pub = self.create_publisher(
             AckermannDriveStamped, drive_topic, 10
         )
         self.tracker_pub = self.create_publisher(
             Marker, path_topic, 10
         )
-        # TODO: need more
+        self.tracker_pub = self.create_publisher(
+            Marker, tracker_topic, 10
+        )
+        # ==============================================================
 
 
         # TODO: get waypoints here
@@ -122,26 +134,56 @@ class MPC(Node):
         # TODO: extract pose from ROS msg
         vehicle_state = None
 
+        vehicle_state.x = pose_msg.pose.position.x
+        vehicle_state.y = pose_msg.pose.position.y
+        vehicle_state.v = 0.0
+        vehicle_state.yaw = euler_from_quaternion(
+            [
+                pose_msg.pose.orientation.x,
+                pose_msg.pose.orientation.y,
+                pose_msg.pose.orientation.z,
+                pose_msg.pose.orientation.w,
+            ]
+        )[2]
+
         # TODO: Calculate the next reference trajectory for the next T steps
         #       with current vehicle pose.
         #       ref_x, ref_y, ref_yaw, ref_v are columns of self.waypoints
+        (
+            ref_x,      # reference x position
+            ref_y,      # reference y position
+            ref_yaw,    # reference yaw
+            ref_v       # reference velocity
+        ) = self.waypoints
+
         ref_path = self.calc_ref_trajectory(self, vehicle_state, ref_x, ref_y, ref_yaw, ref_v)
         x0 = [vehicle_state.x, vehicle_state.y, vehicle_state.v, vehicle_state.yaw]
 
         # TODO: solve the MPC control problem
         (
-            self.oa,
-            self.odelta_v,
-            ox,
-            oy,
-            oyaw,
-            ov,
-            state_predict,
+            self.oa,        # optimal acceleration
+            self.odelta_v,  # optimal steering speed
+            ox,             # optimal x position
+            oy,             # optimal y position
+            oyaw,           # optimal yaw
+            ov,             # optimal velocity
+            state_predict,  # optimal state prediction
         ) = self.linear_mpc_control(ref_path, x0, self.oa, self.odelta_v)
+
+
 
         # TODO: publish drive message.
         steer_output = self.odelta_v[0]
         speed_output = vehicle_state.v + self.oa[0] * self.config.DTK
+
+        # create/publish drive message
+        drive_msg = AckermannDriveStamped()
+        drive_msg.header.stamp = self.get_clock().now().to_msg()
+        drive_msg.drive.steering_angle = steer_output
+        drive_msg.drive.speed = speed_output
+
+        # publish drive command
+        self.drive_pub.publish(drive_msg)
 
     def mpc_prob_init(self):
         """
@@ -268,7 +310,7 @@ class MPC(Node):
 
     def calc_ref_trajectory(self, state, cx, cy, cyaw, sp):
         """
-        calc referent trajectory ref_traj in T steps: [x, y, v, yaw]
+        calc reference trajectory ref_traj in T steps: [x, y, v, yaw]
         using the current velocity, calc the T points along the reference path
         :param cx: Course X-Position
         :param cy: Course y-Position
