@@ -227,7 +227,7 @@ class MPC(Node):
         # The FTOCP has the horizon of T timesteps
 
         # --------------------------------------------------------
-        # TODO: fill in the objectives here, you should be using cvxpy.quad_form() somehwhere
+        # TODO: fill in the objectives here, you should be using cvxpy.quad_form() somehwhere        
 
         # TODO: Objective part 1: Influence of the control inputs: Inputs u multiplied by the penalty R
 
