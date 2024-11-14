@@ -14,7 +14,7 @@ Implemenations for F1tenth autonomus racing.
 
 The following features are to be implemented:
 
-- [x] FAEB - Autonomus Emergency Braking
+- [x] AEB - Autonomus Emergency Braking
 - [x] Wall Follow
 - [x] Follow the Gap
 - [x] SLAM (Simultaneous Localization and Mapping)
